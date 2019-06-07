@@ -9,4 +9,4 @@ spring.datasource.password=12345
 server.port=12345
 spring.jpa. show-sql=true
 spring.jpa.hibernate.ddl-auto=create-drop/update
-spring.jpa.properties.hibernate.dialect=MySQL55Dialect
+spring.jpa.properties.hibernate.dialect=org.hibernate.springframework.MySQL55Dialect
