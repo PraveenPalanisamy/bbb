@@ -75,7 +75,7 @@ public class usercontroller {
 			u3.setAddress(ure.getAddress());
 			return ResponseEntity.ok().body("Updation is Successfull");
 		}
-	return ResponseEntity.ok().body("Update not successfull");
+	return ResponseEntity.ok().body("Update is not successfull");
 	}
 	
 }
