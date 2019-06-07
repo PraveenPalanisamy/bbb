@@ -12,7 +12,7 @@ public interface userrepository extends JpaRepository<user, Long>{
 
 	boolean existsByPassword(String password);
 
-	boolean findById(int id);
+	Optional<user> findById(int id);
 
 	void deleteById(int id);
 

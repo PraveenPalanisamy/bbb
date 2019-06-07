@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -57,15 +58,24 @@ public class usercontroller {
 	 urep.deleteById(id);
 	}
 
-
-	@GetMapping(value="/display{id}")
-	public ResponseEntity<String> disp(@PathVariable int id) {
-		if(urep.findById(id))
+	@GetMapping("/displaying/{id}")
+	public Optional<user> getuserById(@PathVariable (value = "id") int id)
+	{
+		Optional<user> usss = urep.findById(id);
+		return usss;
+	}
+	
+	@PutMapping("/update/{id}")
+	public ResponseEntity<String> update(@RequestBody user ure, @PathVariable("id") int id)
+	{
+		Optional<user> u2=urep.findById(id);
+		if(u2.isPresent())
 		{
-			urep.save(id);
-			return ResponseEntity.ok().body("Displaying");
+			user u3 = u2.get();
+			u3.setAddress(ure.getAddress());
+			return ResponseEntity.ok().body("Update Successfull");
 		}
-	return ResponseEntity.ok().body("not displaying");
+	return ResponseEntity.ok().body("Update not successfull");
 	}
 	
 }
